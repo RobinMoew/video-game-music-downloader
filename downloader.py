@@ -1,13 +1,14 @@
+import argparse
+import json
+import logging
 import os
 import sys
-import json
-import argparse
-import logging
+import time
+import urllib.error
 import urllib.parse as urlparse
 import urllib.request as urllib2
-import urllib.error
-import time
 from concurrent.futures import ThreadPoolExecutor
+
 from bs4 import BeautifulSoup
 
 try:
@@ -115,6 +116,7 @@ def get_album_info(url, config):
 
         # Récupérer le titre de l'album
         album_title = soup.find('h2').text.strip() if soup.find('h2') else "Unknown Album"
+        album_title = sanitize_filename(album_title)
 
         # Créer un dictionnaire pour stocker les informations
         album_info = {
@@ -439,6 +441,15 @@ def download_album(album_url, config):
     logger.info(f"Album téléchargé: {success_count}/{len(album_info['tracks'])} pistes réussies")
 
     return success_count == len(album_info['tracks'])
+
+
+def sanitize_filename(filename):
+    """Supprime les caractères spéciaux interdits dans les noms de fichiers Windows"""
+    # Caractères interdits dans les noms de fichiers Windows: \ / : * ? " < > |
+    forbidden_chars = ['\\', '/', ':', '*', '?', '"', '<', '>', '|']
+    for char in forbidden_chars:
+        filename = filename.replace(char, '_')
+    return filename
 
 
 def main():
