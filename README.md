@@ -38,13 +38,13 @@ pip install mutagen  # Pour les métadonnées
 Exécutez le script sans arguments pour le mode interactif:
 
 ```bash
-python khinsider_downloader.py
+python downloader.py
 ```
 
 ### Arguments en ligne de commande
 
 ```bash
-python khinsider_downloader.py -u URL_DE_L_ALBUM
+python downloader.py -u URL_DE_L_ALBUM
 ```
 
 ### Options disponibles
@@ -63,17 +63,17 @@ python khinsider_downloader.py -u URL_DE_L_ALBUM
 
 Télécharger un album spécifique:
 ```bash
-python khinsider_downloader.py -u https://downloads.khinsider.com/game-soundtracks/album/minecraft
+python downloader.py -u https://downloads.khinsider.com/game-soundtracks/album/minecraft
 ```
 
 Télécharger en FLAC avec 5 threads simultanés:
 ```bash
-python khinsider_downloader.py -u https://downloads.khinsider.com/game-soundtracks/album/minecraft -f flac -t 5
+python downloader.py -u https://downloads.khinsider.com/game-soundtracks/album/minecraft -f flac -t 5
 ```
 
 Télécharger plusieurs albums depuis un fichier:
 ```bash
-python khinsider_downloader.py -i albums.txt -o E:\Musique
+python downloader.py -i albums.txt -o E:\Musique
 ```
 
 ## Configuration
