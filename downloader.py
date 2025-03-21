@@ -448,7 +448,7 @@ def sanitize_filename(filename):
     # Caractères interdits dans les noms de fichiers Windows: \ / : * ? " < > |
     forbidden_chars = ['\\', '/', ':', '*', '?', '"', '<', '>', '|']
     for char in forbidden_chars:
-        filename = filename.replace(char, '_')
+        filename = filename.replace(char, '')
 
     return filename
 
